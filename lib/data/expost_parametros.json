@@ -1,0 +1,260 @@
+{
+  "especies": [
+    {
+      "nombre": "Pinus sylvestris",
+      "modelo_is": "M1",
+      "parametros_is": {
+        "p1": -0.007,
+        "p2": 75.0863,
+        "edad_ref": 30,
+        "p4": 1156.3,
+        "p5": 0.78544,
+        "p6": 0.00006,
+        "p7": 0.03286,
+        "p8": null,
+        "p9": null
+      },
+      "modelo_biomasa": "B1"
+    },
+    {
+      "nombre": "Pinus pinea",
+      "modelo_is": "M6",
+      "parametros_is": {
+        "p1": 0.0022,
+        "p2": -3.6977,
+        "edad_ref": 30,
+        "p4": 250.9,
+        "p5": 0.77303,
+        "p6": 0.00031,
+        "p7": 0.08417,
+        "p8": null,
+        "p9": null
+      },
+      "modelo_biomasa": "B1"
+    },
+    {
+      "nombre": "Pinus halepensis",
+      "modelo_is": "M2",
+      "parametros_is": {
+        "p1": 0.0759,
+        "p2": 0.652,
+        "edad_ref": 30,
+        "p4": 52.2,
+        "p5": 1.39838,
+        "p6": 0.00025,
+        "p7": 0.05534,
+        "p8": null,
+        "p9": null
+      },
+      "modelo_biomasa": "B1"
+    },
+    {
+      "nombre": "Pinus nigra",
+      "modelo_is": "M1",
+      "parametros_is": {
+        "p1": -0.012,
+        "p2": 52.2884,
+        "edad_ref": 30,
+        "p4": 233.8,
+        "p5": 1.01399,
+        "p6": 0.00021,
+        "p7": 0.05138,
+        "p8": null,
+        "p9": null
+      },
+      "modelo_biomasa": "B1"
+    },
+    {
+        "nombre": "Pinus pinaster Atl.",
+        "modelo_is": "M1",
+        "parametros_is": {
+            "p1": -0.0111,
+            "p2": 65.4742,
+            "edad_ref": 30,
+            "p4": 111,
+            "p5": 1.3462,
+            "p6": 0.00023,
+            "p7": 0.03543,
+            "p8": null,
+            "p9": null
+        },
+        "modelo_biomasa": "B1"
+    },
+    {
+        "nombre": "Pinus pinaster Mes.",
+        "modelo_is": "M1",
+        "parametros_is": {
+            "p1": -0.0111,
+            "p2": 65.4742,
+            "edad_ref": 30,
+            "p4": 111,
+            "p5": 1.3462,
+            "p6": 0.00023,
+            "p7": 0.03543,
+            "p8": null,
+            "p9": null
+        },
+        "modelo_biomasa": "B1"
+    },
+    {
+      "nombre": "Q.robur + Q.petraea",
+      "modelo_is": "M2",
+      "parametros_is": {
+        "p1": 0.0953,
+        "p2": 0.6137,
+        "edad_ref": 20,
+        "p4": 19.6,
+        "p5": 1.27524,
+        "p6": 0.00017,
+        "p7": 0.11824,
+        "p8": null,
+        "p9": null
+      },
+      "modelo_biomasa": "B1"
+    },
+    {
+      "nombre": "Quercus pyrenaica",
+      "modelo_is": "M6",
+      "parametros_is": {
+        "p1": 0.0011,
+        "p2": -4.9734,
+        "edad_ref": 20,
+        "p4": 635.8,
+        "p5": 0.05333,
+        "p6": 0.00010,
+        "p7": 0.16367,
+        "p8": null,
+        "p9": null
+      },
+      "modelo_biomasa": "B1"
+    },
+    {
+      "nombre": "Quercus faginea",
+      "modelo_is": "M7",
+      "parametros_is": {
+        "p1": 10.3165,
+        "p2": 1.0842,
+        "edad_ref": 20,
+        "p4": 635.8,
+        "p5": 0.05333,
+        "p6": 0.00010,
+        "p7": 0.16367,
+        "p8": null,
+        "p9": null
+      },
+      "modelo_biomasa": "B1"
+    },
+    {
+      "nombre": "Quercus ilex",
+      "modelo_is": "M6",
+      "parametros_is": {
+        "p1": 0.0035,
+        "p2": -3.2064,
+        "edad_ref": 20,
+        "p4": 3.8,
+        "p5": 2.03002,
+        "p6": 0.00024,
+        "p7": 0.19425,
+        "p8": null,
+        "p9": null
+      },
+      "modelo_biomasa": "B1"
+    },
+    {
+      "nombre": "Quercus suber",
+      "modelo_is": "M1",
+      "parametros_is": {
+        "p1": -0.0275,
+        "p2": 13.2061,
+        "edad_ref": 20,
+        "p4": 82.2,
+        "p5": 0.73551,
+        "p6": 0.00048,
+        "p7": 0.17603,
+        "p8": null,
+        "p9": null
+      },
+      "modelo_biomasa": "B1"
+    },    
+    {
+      "nombre": "Castanea sp.(m)",
+      "modelo_is": "M2",
+      "parametros_is": {
+        "p1": -0.139,
+        "p2": 0.886,
+        "edad_ref": 10,
+        "p4": 1787.4,
+        "p5": -1.1235,
+        "p6": 0.00032,
+        "p7": 0.2863,
+        "p8": null,
+        "p9": -147.6
+      },
+      "modelo_biomasa": "B2"
+    },
+    {
+      "nombre": "Castanea sp.(f)",
+      "modelo_is": "M2",
+      "parametros_is": {
+        "p1": -0.139,
+        "p2": 0.886,
+        "edad_ref": 10,
+        "p4": 1787.4,
+        "p5": -1.1235,
+        "p6": 0.00032,
+        "p7": 0.2863,
+        "p8": null,
+        "p9": -147.6
+      },
+      "modelo_biomasa": "B2"
+    },
+    {
+      "nombre": "Eucalyptus globulus",
+      "modelo_is": "M11",
+      "parametros_is": {
+        "p1": 13.9,
+        "p2": 0.5989,
+        "edad_ref": 7,
+        "p4": 7.0685,
+        "p5": 0.9092,
+        "p6": -0.00039,
+        "p7": 0.0452,
+        "p8": null,
+        "p9": null
+      },
+      "modelo_biomasa": "B3"
+    },
+    {
+      "nombre": "Eucalyptus nitens",
+      "modelo_is": "M12",
+      "parametros_is": {
+        "p1": 1466,
+        "p2": 1.604,
+        "edad_ref": 6,
+        "p4": 2901.2,
+        "p5": 0.934,
+        "p6": 0.000117,
+        "p7": 0.0438,
+        "p8": null,
+        "p9": null
+      },
+      "modelo_biomasa": "B1"
+    },
+    {
+      "nombre": "Pinus radiata",
+      "modelo_is": "M5",
+      "parametros_is": {
+        "p1": 0.06738,
+        "p2": -1.755,
+        "edad_ref": 20,
+        "p4": 306.1,
+        "p5": 0.6951,
+        "p6": 0.000623,
+        "p7": 0.0437,
+        "p8": 12.44,
+        "p9": null
+      },
+      "modelo_biomasa": "B1"
+    }
+  ]
+}

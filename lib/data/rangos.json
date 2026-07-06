@@ -1,0 +1,580 @@
+{
+  "especies": [
+    {
+      "nombre": "Betula sp.",
+      "edad": {
+        "media": 25.5,
+        "min": 4.0,
+        "max": 52.0
+      },
+      "densidad": {
+        "media": 1270.0,
+        "min": 617.0,
+        "max": 2511.0
+      },
+      "precipitación": {
+        "media": 10.9,
+        "min": 8.5,
+        "max": 12.3
+      }
+    },
+    {
+      "nombre": "Castanea hyb",
+      "edad": {
+        "media": 11.1,
+        "min": 2.0,
+        "max": 28.0
+      },
+      "densidad": {
+        "media": 199.0,
+        "min": 59.0,
+        "max": 394.0
+      },
+      "precipitación": {
+        "media": 12.6,
+        "min": 10.3,
+        "max": 15.0
+      }
+    },
+    {
+      "nombre": "Castanea sativa",
+      "edad": {
+        "media": 9.0,
+        "min": 2.0,
+        "max": 20.0
+      },
+      "densidad": {
+        "media": 715.0,
+        "min": 400.0,
+        "max": 1942.0
+      },
+      "precipitación": {
+        "media": 11.3,
+        "min": 8.6,
+        "max": 13.6
+      }
+    },
+    {
+      "nombre": "Ceratonia siliqua",
+      "edad": {
+        "media": 17.2,
+        "min": 11.0,
+        "max": 30.0
+      },
+      "densidad": {
+        "media": 346.0,
+        "min": 50.0,
+        "max": 1025.0
+      },
+      "precipitación": {
+        "media": 17.3,
+        "min": 15.9,
+        "max": 18.3
+      }
+    },
+    {
+      "nombre": "Coniferas mediterráneas",
+      "edad": {
+        "media": 16.0,
+        "min": 1.0,
+        "max": 35.0
+      },
+      "densidad": {
+        "media": 876.0,
+        "min": 178.0,
+        "max": 2375.0
+      },
+      "precipitación": {
+        "media": 13.1,
+        "min": 9.4,
+        "max": 17.9
+      }
+    },
+    {
+      "nombre": "Coniferas montaña",
+      "edad": {
+        "media": 19.0,
+        "min": 3.0,
+        "max": 38.0
+      },
+      "densidad": {
+        "media": 1345.0,
+        "min": 380.0,
+        "max": 2900.0
+      },
+      "precipitación": {
+        "media": 9.8,
+        "min": 5.7,
+        "max": 12.5
+      }
+    },
+    {
+      "nombre": "Coniferas productivas medio atlantico",
+      "edad": {
+        "media": 19.5,
+        "min": 1.0,
+        "max": 54.0
+      },
+      "densidad": {
+        "media": 817.0,
+        "min": 56.0,
+        "max": 3133.0
+      },
+      "precipitación": {
+        "media": 12.0,
+        "min": 9.5,
+        "max": 14.6
+      }
+    },
+    {
+      "nombre": "Eucalyptus globulus",
+      "edad": {
+        "media": 9.7,
+        "min": 2.0,
+        "max": 28.0
+      },
+      "densidad": {
+        "media": 1111.0,
+        "min": 155.0,
+        "max": 1524.0
+      },
+      "precipitación": {
+        "media": 13.4,
+        "min": 11.3,
+        "max": 14.5
+      }
+    },
+    {
+      "nombre": "Eucalyptus nitens",
+      "edad": {
+        "media": 8.6,
+        "min": 2.0,
+        "max": 17.0
+      },
+      "densidad": {
+        "media": 1164.0,
+        "min": 201.0,
+        "max": 2686.0
+      },
+      "precipitación": {
+        "media": 12.0,
+        "min": 10.8,
+        "max": 13.7
+      }
+    },
+    {
+      "nombre": "Fagus sylvatica",
+      "edad": {
+        "media": 17.7,
+        "min": 10.0,
+        "max": 42.0
+      },
+      "densidad": {
+        "media": 1236.0,
+        "min": 283.0,
+        "max": 2000.0
+      },
+      "precipitación": {
+        "media": 11.0,
+        "min": 8.6,
+        "max": 12.6
+      }
+    },
+    {
+      "nombre": "Fraxinus sp.",
+      "edad": {
+        "media": 15.8,
+        "min": 4.0,
+        "max": 30.0
+      },
+      "densidad": {
+        "media": 510.0,
+        "min": 28.0,
+        "max": 1760.0
+      },
+      "precipitación": {
+        "media": 15.7,
+        "min": 11.1,
+        "max": 18.6
+      }
+    },
+    {
+      "nombre": "Frondosas caducifolias medio atlantico",
+      "edad": {
+        "media": 21.0,
+        "min": 4.0,
+        "max": 94.0
+      },
+      "densidad": {
+        "media": 1243.0,
+        "min": 233.0,
+        "max": 2511.0
+      },
+      "precipitación": {
+        "media": 11.3,
+        "min": 8.6,
+        "max": 14.3
+      }
+    },
+    {
+      "nombre": "Frondosas caducifolias medio mediterráneo",
+      "edad": {
+        "media": 14.1,
+        "min": 4.0,
+        "max": 29.0
+      },
+      "densidad": {
+        "media": 708.0,
+        "min": 28.0,
+        "max": 2650.0
+      },
+      "precipitación": {
+        "media": 12.1,
+        "min": 15.9,
+        "max": 63.0
+      }
+    },
+    {
+      "nombre": "Frondosas perennifolias medio mediterráneo",
+      "edad": {
+        "media": 15.1,
+        "min": 1.0,
+        "max": 31.0
+      },
+      "densidad": {
+        "media": 629.0,
+        "min": 28.0,
+        "max": 5384.0
+      },
+      "precipitación": {
+        "media": 14.8,
+        "min": 8.7,
+        "max": 18.6
+      }
+    },
+    {
+      "nombre": "Juniperus sp.",
+      "edad": {
+        "media": 14.9,
+        "min": 4.0,
+        "max": 28.0
+      },
+      "densidad": {
+        "media": 1079.0,
+        "min": 326.0,
+        "max": 5384.0
+      },
+      "precipitación": {
+        "media": 12.4,
+        "min": 10.1,
+        "max": 28.5
+      }
+    },
+    {
+      "nombre": "Larix spp",
+      "edad": {
+        "media": 22.2,
+        "min": 7.0,
+        "max": 42.0
+      },
+      "densidad": {
+        "media": 694.0,
+        "min": 118.0,
+        "max": 1512.0
+      },
+      "precipitación": {
+        "media": 11.1,
+        "min": 10.2,
+        "max": 12.5
+      }
+    },
+    {
+      "nombre": "Olea europaea",
+      "edad": {
+        "media": 16.1,
+        "min": 6.0,
+        "max": 27.0
+      },
+      "densidad": {
+        "media": 334.0,
+        "min": 152.0,
+        "max": 725.0
+      },
+      "precipitación": {
+        "media": 15.6,
+        "min": 13.9,
+        "max": 18.3
+      }
+    },
+    {
+      "nombre": "Pinus halepensis",
+      "edad": {
+        "media": 16.3,
+        "min": 2.0,
+        "max": 35.0
+      },
+      "densidad": {
+        "media": 867.0,
+        "min": 178.0,
+        "max": 2375.0
+      },
+      "precipitación": {
+        "media": 13.4,
+        "min": 10.5,
+        "max": 16.9
+      }
+    },
+    {
+      "nombre": "Pinus nigra",
+      "edad": {
+        "media": 19.3,
+        "min": 3.0,
+        "max": 38.0
+      },
+      "densidad": {
+        "media": 1144.0,
+        "min": 203.0,
+        "max": 2083.0
+      },
+      "precipitación": {
+        "media": 10.4,
+        "min": 8.7,
+        "max": 13.2
+      }
+    },
+    {
+      "nombre": "Pinus pinaster atl.",
+      "edad": {
+        "media": 16.4,
+        "min": 3.0,
+        "max": 47.0
+      },
+      "densidad": {
+        "media": 951.0,
+        "min": 275.0,
+        "max": 2236.0
+      },
+      "precipitación": {
+        "media": 12.3,
+        "min": 10.5,
+        "max": 14.6
+      }
+    },
+    {
+      "nombre": "Pinus pinaster mes.",
+      "edad": {
+        "media": 21.0,
+        "min": 4.0,
+        "max": 41.0
+      },
+      "densidad": {
+        "media": 1124.0,
+        "min": 323.0,
+        "max": 3133.0
+      },
+      "precipitación": {
+        "media": 11.3,
+        "min": 8.7,
+        "max": 15.5
+      }
+    },
+    {
+      "nombre": "Pinus pinea",
+      "edad": {
+        "media": 15.7,
+        "min": 1.0,
+        "max": 35.0
+      },
+      "densidad": {
+        "media": 887.0,
+        "min": 196.0,
+        "max": 2375.0
+      },
+      "precipitación": {
+        "media": 12.7,
+        "min": 9.4,
+        "max": 17.9
+      }
+    },
+    {
+      "nombre": "Pinus radiata",
+      "edad": {
+        "media": 21.7,
+        "min": 1.0,
+        "max": 42.0
+      },
+      "densidad": {
+        "media": 696.0,
+        "min": 56.0,
+        "max": 3133.0
+      },
+      "precipitación": {
+        "media": 12.1,
+        "min": 9.5,
+        "max": 13.6
+      }
+    },
+    {
+      "nombre": "Pinus sylvestris",
+      "edad": {
+        "media": 18.8,
+        "min": 5.0,
+        "max": 42.0
+      },
+      "densidad": {
+        "media": 1420.0,
+        "min": 504.0,
+        "max": 2900.0
+      },
+      "precipitación": {
+        "media": 9.6,
+        "min": 5.7,
+        "max": 11.5
+      }
+    },
+    {
+      "nombre": "Populus x deltoides",
+      "edad": {
+        "media": 5.0,
+        "min": 1.0,
+        "max": 11.0
+      },
+      "densidad": {
+        "media": 284.0,
+        "min": 250.0,
+        "max": 400.0
+      },
+      "precipitación": {
+        "media": 11.4,
+        "min": 10.0,
+        "max": 15.3
+      }
+    },
+    {
+      "nombre": "Pseudotsuga menziesii",
+      "edad": {
+        "media": 22.2,
+        "min": 7.0,
+        "max": 42.0
+      },
+      "densidad": {
+        "media": 694.0,
+        "min": 118.0,
+        "max": 1512.0
+      },
+      "precipitación": {
+        "media": 11.1,
+        "min": 10.2,
+        "max": 12.5
+      }
+    },
+    {
+      "nombre": "Q.robur + Q.petraea",
+      "edad": {
+        "media": 16.1,
+        "min": 4.0,
+        "max": 20.0
+      },
+      "densidad": {
+        "media": 1397.0,
+        "min": 233.0,
+        "max": 2650.0
+      },
+      "precipitación": {
+        "media": 11.1,
+        "min": 9.8,
+        "max": 12.7
+      }
+    },
+    {
+      "nombre": "Quercus faginea",
+      "edad": {
+        "media": 15.3,
+        "min": 3.0,
+        "max": 30.0
+      },
+      "densidad": {
+        "media": 948.0,
+        "min": 86.0,
+        "max": 1835.0
+      },
+      "precipitación": {
+        "media": 11.8,
+        "min": 9.4,
+        "max": 14.3
+      }
+    },
+    {
+      "nombre": "Quercus ilex",
+      "edad": {
+        "media": 14.5,
+        "min": 1.0,
+        "max": 31.0
+      },
+      "densidad": {
+        "media": 751.0,
+        "min": 125.0,
+        "max": 5384.0
+      },
+      "precipitación": {
+        "media": 14.0,
+        "min": 8.7,
+        "max": 18.6
+      }
+    },
+    {
+      "nombre": "Quercus pyrenaica",
+      "edad": {
+        "media": 14.1,
+        "min": 3.0,
+        "max": 30.0
+      },
+      "densidad": {
+        "media": 1184.0,
+        "min": 249.0,
+        "max": 2415.0
+      },
+      "precipitación": {
+        "media": 9.9,
+        "min": 8.7,
+        "max": 11.0
+      }
+    },
+    {
+      "nombre": "Quercus suber",
+      "edad": {
+        "media": 15.8,
+        "min": 4.0,
+        "max": 30.0
+      },
+      "densidad": {
+        "media": 510.0,
+        "min": 28.0,
+        "max": 1760.0
+      },
+      "precipitación": {
+        "media": 15.7,
+        "min": 11.1,
+        "max": 18.6
+      }
+    },
+    {
+      "nombre": "Sequoia spp",
+      "edad": {
+        "media": 16.6,
+        "min": 3.0,
+        "max": 34.0
+      },
+      "densidad": {
+        "media": 922.0,
+        "min": 453.0,
+        "max": 1648.0
+      },
+      "precipitación": {
+        "media": 11.9,
+        "min": 10.6,
+        "max": 13.1
+      }
+    }
+  ]
+}
