@@ -7,7 +7,6 @@ import 'providers/app_state.dart';
 import 'screens/exante_page.dart';
 import 'screens/expost_page.dart';
 
-
 void main() {
   runApp(MyApp());
 }
