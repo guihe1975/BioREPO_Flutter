@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../services/biomasa_service.dart';
 import '../providers/app_state.dart';
+
+
+
 
 class ExpostPage extends StatefulWidget {
   @override
@@ -158,6 +162,7 @@ class _ExpostPageState extends State<ExpostPage> {
                                         // ✅ % presencia
                                         SizedBox(
                                           width: 70,
+                                          height: 40,
                                           child: TextField(
                                             controller: porcentajes[especie],
                                             decoration:
@@ -175,6 +180,7 @@ class _ExpostPageState extends State<ExpostPage> {
                                         // ✅ altura media
                                         SizedBox(
                                           width: 80,
+                                          height: 40,
                                           child: TextField(
                                             controller: alturas[especie],
                                             decoration:
@@ -251,6 +257,50 @@ class _ExpostPageState extends State<ExpostPage> {
                     }
 
                     print("✅ Datos EXPOST correctos");
+                    
+                    // ===================================
+                    // TEST MODELO IS
+                    // ===================================
+
+                    for (var especie in seleccionadas) {
+
+                      final datos = appState.obtenerDatosExpost(especie);
+
+                      if (datos == null) {
+                        print("⚠️ No hay datos EXPOST para $especie");
+                        continue;
+                      }
+
+                      final modelo = datos["modelo_is"];
+                      final parametros = datos["parametros_is"];
+
+                      final t2 =
+                          (parametros["edad_ref"] ?? 0).toDouble();
+
+                      final altura =
+                          double.tryParse(alturas[especie]?.text ?? '0') ?? 0;
+
+                      final edad =
+                          double.tryParse(edadController.text) ?? 0;
+
+                      final IS = BiomasaService.calcularIndiceSitio(
+                        modelo: modelo,
+                        H1: altura,
+                        t1: edad,
+                        t2: t2,
+                        parametros: parametros,
+                      );
+
+                      // ✅ PRINT EXTERNO
+                      print("================================");
+                      print("Especie: $especie");
+                      print("Modelo IS: $modelo");
+                      print("Altura: $altura");
+                      print("Edad: $edad");
+                      print("Edad referencia: $t2");
+                      print("Indice Sitio: ${IS.toStringAsFixed(3)}");
+                    }
+
                   },
                   child: const Text("Validar datos EXPOST"),
                 ),

@@ -242,7 +242,21 @@ class BiomasaService {
 
     final exponente = num / den;
 
-    return a2 * pow((H1 / a2), exponente);
+    final resultado =
+        a2 * pow((H1 / a2), exponente);
+
+    print("===== M1 =====");
+    print("H1: $H1");
+    print("t1: $t1");
+    print("t2: $t2");
+    print("a1: $a1");
+    print("a2: $a2");
+    print("num: $num");
+    print("den: $den");
+    print("exp: $exponente");
+    print("IS: $resultado");
+
+    return resultado.toDouble();
   }
   
   // ================================
