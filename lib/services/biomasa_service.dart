@@ -329,13 +329,43 @@ class BiomasaService {
 
     return resultadoM6.toDouble();
   }
-  
+      
+    static double _modeloIS_M7(
+      double H1,
+      double t1,
+      double t2,
+      Map<String, dynamic> p,
+    ) {
+      final a1 = (p["p1"] ?? 0).toDouble();
+      final a2 = (p["p2"] ?? 0).toDouble();
 
+      if (H1 == 0 || t2 == 0) return 0;
 
+      final parte1 = (a1 / H1);
 
+      final parte2 = pow((t1 / t2), a2);
 
+      final denominador =
+          1 - (1 - (parte1 * parte2));
 
+      if (denominador == 0) return 0;
 
+      final resultadoM7 =
+          a1 / denominador;
+
+      print("===== M7 =====");
+      print("H1: $H1");
+      print("t1: $t1");
+      print("t2: $t2");
+      print("a1: $a1");
+      print("a2: $a2");
+      print("parte1: $parte1");
+      print("parte2: $parte2");
+      print("denominador: $denominador");
+      print("IS: $resultadoM7");
+
+      return resultadoM7.toDouble();
+    }
   
   // ================================
   // ✅ CALCULO ÍNDICE DE SITIO (EXPOST)
@@ -358,18 +388,12 @@ class BiomasaService {
 
       case "M6":
         return _modeloIS_M6(H1, t1, t2, parametros);
+      
+      case "M7":
+        return _modeloIS_M7(H1, t1, t2, parametros);
 
       default:
         return 0;
     }
   }
-
-
-
-
-
-
-
-
-
 }
