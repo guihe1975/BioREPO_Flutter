@@ -226,6 +226,7 @@ class BiomasaService {
   // =====================================================
   // =====================================================
 
+  // ==============   MODELO 1    ========================
   static double _modeloIS_M1(
     double H1,
     double t1,
@@ -242,22 +243,99 @@ class BiomasaService {
 
     final exponente = num / den;
 
-    final resultado =
+    final resultadoM1 =
         a2 * pow((H1 / a2), exponente);
 
     print("===== M1 =====");
+    print("IS: $resultadoM1");    
     print("H1: $H1");
     print("t1: $t1");
     print("t2: $t2");
     print("a1: $a1");
     print("a2: $a2");
-    print("num: $num");
-    print("den: $den");
-    print("exp: $exponente");
-    print("IS: $resultado");
+    print("IS: $resultadoM1");
 
-    return resultado.toDouble();
+    return resultadoM1.toDouble();
   }
+  
+  // ==============   MODELO 2    ========================
+  static double _modeloIS_M2(
+    double H1,
+    double t1,
+    double t2,
+    Map<String, dynamic> p,
+  ) {
+    final a1 = (p["p1"] ?? 0).toDouble();
+    final a2 = (p["p2"] ?? 0).toDouble();
+
+    final num = (1 - exp(a1 * t2));
+    final den = (1 - exp(a1 * t1));
+
+    if (den == 0) return 0;
+
+    final exponente = num / den;
+
+    final resultadoM2 =
+        H1 * pow(exponente, a2);
+
+    print("===== M2 =====");
+    print("H1: $H1");
+    print("t1: $t1");
+    print("t2: $t2");
+    print("a1: $a1");
+    print("a2: $a2");
+    print("exponente: $exponente");
+    print("IS: $resultadoM2");
+
+    return resultadoM2.toDouble();
+  }
+  
+  // ==============   MODELO 6    ========================
+  static double _modeloIS_M6(
+    double H1,
+    double t1,
+    double t2,
+    Map<String, dynamic> p,
+  ) {
+    final a1 = (p["p1"] ?? 0).toDouble();
+    final a2 = (p["p2"] ?? 0).toDouble();
+
+    final termino =
+        1 - exp(-a1 * t1);
+
+    if (termino <= 0) return 0;
+
+    final logTermino = log(termino);
+
+    final X0 =
+        (log(H1) - a2 * logTermino) /
+        (1 + logTermino);
+
+    final resultadoM6 =
+        exp(X0) *
+        pow(
+          1 - exp(-a1 * t2),
+          a2 + X0,
+        );
+
+    print("===== M6 =====");
+    print("H1: $H1");
+    print("t1: $t1");
+    print("t2: $t2");
+    print("a1: $a1");
+    print("a2: $a2");
+    print("X0: $X0");
+    print("IS: $resultadoM6");
+
+    return resultadoM6.toDouble();
+  }
+  
+
+
+
+
+
+
   
   // ================================
   // ✅ CALCULO ÍNDICE DE SITIO (EXPOST)
@@ -276,10 +354,10 @@ class BiomasaService {
         return _modeloIS_M1(H1, t1, t2, parametros);
 
       case "M2":
-        return _modeloIS_M1(H1, t1, t2, parametros);
+        return _modeloIS_M2(H1, t1, t2, parametros);
 
-      case "M3":
-        return _modeloIS_M1(H1, t1, t2, parametros);
+      case "M6":
+        return _modeloIS_M6(H1, t1, t2, parametros);
 
       default:
         return 0;
