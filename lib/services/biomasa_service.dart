@@ -450,13 +450,14 @@ class BiomasaService {
         a3 * indiceSitio;
 
     final resultado =
-        a0 * pow(edad, exponente);
+        (a0 * pow(edad, exponente))/1000;
 
     print("===== B1 =====");
     print("a0: $a0");
     print("a1: $a1");
     print("a2: $a2");
     print("a3: $a3");
+    print("exponente: $exponente");
     print("IS: $indiceSitio");
     print("Biomasa: $resultado");
 
