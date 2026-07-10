@@ -367,9 +367,9 @@ class BiomasaService {
       return resultadoM7.toDouble();
     }
   
-  // ================================
+  // =====================================
   // ✅ CALCULO ÍNDICE DE SITIO (EXPOST)
-  // ================================
+  // =====================================
   static double calcularIndiceSitio({
     required String modelo,
     required double H1,
@@ -395,5 +395,138 @@ class BiomasaService {
       default:
         return 0;
     }
+  }
+  // ================================
+  // ✅ BIOMASA EXPOST
+  // ================================
+  static double calcularBiomasaExpost({
+    required String modeloBiomasa,
+    required double edad,
+    required double densidad,
+    required double indiceSitio,
+    required Map<String, dynamic> parametros,
+  }) {
+    switch (modeloBiomasa) {
+
+      case "B1":
+        return _modeloB1(
+          edad,
+          densidad,
+          indiceSitio,
+          parametros,
+        );
+
+      case "B2":
+        return _modeloB2(
+          edad,
+          densidad,
+          indiceSitio,
+          parametros,
+        );
+
+      case "B3":
+        return _modeloB3(
+          edad,
+          densidad,
+          indiceSitio,
+          parametros,
+        );
+
+      default:
+        return 0;
+    }
+  }
+  
+  static double _modeloB1(
+    double edad,
+    double densidad,
+    double indiceSitio,
+    Map<String, dynamic> p,
+  ) {
+
+    final a0 = (p["p4"] ?? 0).toDouble();
+    final a1 = (p["p5"] ?? 0).toDouble();
+    final a2 = (p["p6"] ?? 0).toDouble();
+    final a3 = (p["p7"] ?? 0).toDouble();
+
+    final exponente =
+        a1 +
+        a2 * densidad +
+        a3 * indiceSitio;
+
+    final resultado =
+        a0 * pow(edad, exponente);
+
+    print("===== B1 =====");
+    print("IS: $indiceSitio");
+    print("Edad: $edad");
+    print("Densidad: $densidad");
+    print("Biomasa: $resultado");
+
+    return resultado.toDouble();
+  }
+
+  static double _modeloB2(
+    double edad,
+    double densidad,
+    double indiceSitio,
+    Map<String, dynamic> p,
+  ) {
+
+    final a0 = (p["p4"] ?? 0).toDouble();
+    final a1 = (p["p5"] ?? 0).toDouble();
+    final a2 = (p["p6"] ?? 0).toDouble();
+    final a3 = (p["p7"] ?? 0).toDouble();
+    final a4 = (p["p8"] ?? 0).toDouble();
+
+    final base =
+        a0 + a4 * indiceSitio;
+
+    final exponente =
+        a1 +
+        a2 * densidad +
+        a3 * indiceSitio;
+
+    final resultado =
+        base * pow(edad, exponente);
+
+    print("===== B2 =====");
+    print("IS: $indiceSitio");
+    print("Edad: $edad");
+    print("Densidad: $densidad");
+    print("Biomasa: $resultado");
+
+    return resultado.toDouble();
+  }
+  static double _modeloB3(
+    double edad,
+    double densidad,
+    double indiceSitio,
+    Map<String, dynamic> p,
+  ) {
+
+    final a0 = (p["p4"] ?? 0).toDouble();
+    final a1 = (p["p5"] ?? 0).toDouble();
+    final a2 = (p["p6"] ?? 0).toDouble();
+    final a3 = (p["p7"] ?? 0).toDouble();
+
+    final base =
+        a0 * densidad;
+
+    final exponente =
+        a1 +
+        a2 * densidad +
+        a3 * indiceSitio;
+
+    final resultado =
+        base * pow(edad, exponente);
+
+    print("===== B3 =====");
+    print("IS: $indiceSitio");
+    print("Edad: $edad");
+    print("Densidad: $densidad");
+    print("Biomasa: $resultado");
+
+    return resultado.toDouble();
   }
 }

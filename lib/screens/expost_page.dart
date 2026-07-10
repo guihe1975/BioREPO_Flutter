@@ -300,7 +300,6 @@ class _ExpostPageState extends State<ExpostPage> {
                       print("Edad referencia: $t2");
                       print("Indice Sitio: ${IS.toStringAsFixed(3)}");
                     }
-
                   },
                   child: const Text("Validar datos EXPOST"),
                 ),
