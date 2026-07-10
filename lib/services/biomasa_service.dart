@@ -407,7 +407,6 @@ class BiomasaService {
     required Map<String, dynamic> parametros,
   }) {
     switch (modeloBiomasa) {
-
       case "B1":
         return _modeloB1(
           edad,
@@ -415,7 +414,6 @@ class BiomasaService {
           indiceSitio,
           parametros,
         );
-
       case "B2":
         return _modeloB2(
           edad,
@@ -423,7 +421,6 @@ class BiomasaService {
           indiceSitio,
           parametros,
         );
-
       case "B3":
         return _modeloB3(
           edad,
@@ -431,7 +428,6 @@ class BiomasaService {
           indiceSitio,
           parametros,
         );
-
       default:
         return 0;
     }
@@ -443,7 +439,6 @@ class BiomasaService {
     double indiceSitio,
     Map<String, dynamic> p,
   ) {
-
     final a0 = (p["p4"] ?? 0).toDouble();
     final a1 = (p["p5"] ?? 0).toDouble();
     final a2 = (p["p6"] ?? 0).toDouble();
@@ -458,9 +453,11 @@ class BiomasaService {
         a0 * pow(edad, exponente);
 
     print("===== B1 =====");
+    print("a0: $a0");
+    print("a1: $a1");
+    print("a2: $a2");
+    print("a3: $a3");
     print("IS: $indiceSitio");
-    print("Edad: $edad");
-    print("Densidad: $densidad");
     print("Biomasa: $resultado");
 
     return resultado.toDouble();
@@ -472,7 +469,6 @@ class BiomasaService {
     double indiceSitio,
     Map<String, dynamic> p,
   ) {
-
     final a0 = (p["p4"] ?? 0).toDouble();
     final a1 = (p["p5"] ?? 0).toDouble();
     final a2 = (p["p6"] ?? 0).toDouble();

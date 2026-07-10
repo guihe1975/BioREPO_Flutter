@@ -282,6 +282,9 @@ class _ExpostPageState extends State<ExpostPage> {
 
                       final edad =
                           double.tryParse(edadController.text) ?? 0;
+                      
+                      final densidad =
+                          double.tryParse(densidadController.text) ?? 0;
 
                       final IS = BiomasaService.calcularIndiceSitio(
                         modelo: modelo,
@@ -290,6 +293,18 @@ class _ExpostPageState extends State<ExpostPage> {
                         t2: t2,
                         parametros: parametros,
                       );
+
+                      final modeloBiomasa = datos["modelo_biomasa"];
+
+                      final biomasa = BiomasaService.calcularBiomasaExpost(
+                        modeloBiomasa: modeloBiomasa,
+                        edad: edad,
+                        densidad: densidad,
+                        indiceSitio: IS,
+                        parametros: parametros,
+                      );
+
+                      print("Biomasa final: $biomasa");
 
                       // ✅ PRINT EXTERNO
                       print("================================");
