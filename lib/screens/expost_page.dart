@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/biomasa_service.dart';
 import '../providers/app_state.dart';
+import '../screens/resultados_expost_page.dart';
+
 
 
 
@@ -261,6 +263,9 @@ class _ExpostPageState extends State<ExpostPage> {
                     // ===================================
                     // TEST MODELO IS
                     // ===================================
+                    List<Map<String, dynamic>> listaResultados =[];
+                    double totalBiomasa =0;
+
 
                     for (var especie in seleccionadas) {
 
@@ -303,18 +308,87 @@ class _ExpostPageState extends State<ExpostPage> {
                         indiceSitio: IS,
                         parametros: parametros,
                       );
+                                          for (var especie in seleccionadas) {
 
-                      print("Biomasa final: $biomasa");
+                      final datos = appState.obtenerDatosExpost(especie);
 
-                      // ✅ PRINT EXTERNO
-                      print("================================");
-                      print("Especie: $especie");
-                      print("Modelo IS: $modelo");
-                      print("Altura: $altura");
-                      print("Edad: $edad");
-                      print("Edad referencia: $t2");
-                      print("Indice Sitio: ${IS.toStringAsFixed(3)}");
+                      if (datos == null) {
+                        print("⚠️ No hay datos EXPOST para $especie");
+                        continue;
+                      }
+
+                      final modelo = datos["modelo_is"];
+                      final parametros = datos["parametros_is"];
+
+                      final t2 =
+                          (parametros["edad_ref"] ?? 0).toDouble();
+
+                      final altura =
+                          double.tryParse(alturas[especie]?.text ?? '0') ?? 0;
+
+                      final edad =
+                          double.tryParse(edadController.text) ?? 0;
+                      
+                      final densidad =
+                          double.tryParse(densidadController.text) ?? 0;
+
+                      final IS = BiomasaService.calcularIndiceSitio(
+                        modelo: modelo,
+                        H1: altura,
+                        t1: edad,
+                        t2: t2,
+                        parametros: parametros,
+                      );
+
+                      final modeloBiomasa = datos["modelo_biomasa"];
+
+                      final biomasa = BiomasaService.calcularBiomasaExpost(
+                        modeloBiomasa: modeloBiomasa,
+                        edad: edad,
+                        densidad: densidad,
+                        indiceSitio: IS,
+                        parametros: parametros,
+                      );
+                      listaResultados.add({
+                        "nombre": especie,
+                        "porcentaje": double.tryParse(
+                          porcentajes[especie]?.text ?? '0') ?? 0,
+                        "altura": altura,
+                        "Indice Sitio": IS,
+                        "Biomasa": biomasa,
+                      });
+
+                      totalBiomasa += biomasa;
                     }
+                    }
+                  final superficie =
+                    double.tryParse(superficieController.text) ?? 0;
+
+                  final biomasaTotalProyecto = (totalBiomasa * superficie)/1000; //de kg a toneladas
+
+                  print(listaResultados);
+                  print("Total ha = $totalBiomasa");
+                  print("Total proyecto = $biomasaTotalProyecto");
+                  
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ResultadosExpostPage(
+                        resultados: listaResultados,
+                        edadUsuario: int.tryParse(
+                              edadController.text,
+                            ) ??
+                            0,
+                        densidadUsuario: double.tryParse(
+                              densidadController.text,
+                            ) ??
+                            0,
+                        superficieUsuario: superficie,
+                        totalPorHa: totalBiomasa,
+                        totalProyecto: biomasaTotalProyecto,
+                      ),
+                    ),
+                  );
                   },
                   child: const Text("Validar datos EXPOST"),
                 ),

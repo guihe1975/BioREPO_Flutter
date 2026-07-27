@@ -246,15 +246,6 @@ class BiomasaService {
     final resultadoM1 =
         a2 * pow((H1 / a2), exponente);
 
-    print("===== M1 =====");
-    print("IS: $resultadoM1");    
-    print("H1: $H1");
-    print("t1: $t1");
-    print("t2: $t2");
-    print("a1: $a1");
-    print("a2: $a2");
-    print("IS: $resultadoM1");
-
     return resultadoM1.toDouble();
   }
   
@@ -277,15 +268,6 @@ class BiomasaService {
 
     final resultadoM2 =
         H1 * pow(exponente, a2);
-
-    print("===== M2 =====");
-    print("H1: $H1");
-    print("t1: $t1");
-    print("t2: $t2");
-    print("a1: $a1");
-    print("a2: $a2");
-    print("exponente: $exponente");
-    print("IS: $resultadoM2");
 
     return resultadoM2.toDouble();
   }
@@ -318,15 +300,6 @@ class BiomasaService {
           a2 + X0,
         );
 
-    print("===== M6 =====");
-    print("H1: $H1");
-    print("t1: $t1");
-    print("t2: $t2");
-    print("a1: $a1");
-    print("a2: $a2");
-    print("X0: $X0");
-    print("IS: $resultadoM6");
-
     return resultadoM6.toDouble();
   }
       
@@ -352,17 +325,6 @@ class BiomasaService {
 
       final resultadoM7 =
           a1 / denominador;
-
-      print("===== M7 =====");
-      print("H1: $H1");
-      print("t1: $t1");
-      print("t2: $t2");
-      print("a1: $a1");
-      print("a2: $a2");
-      print("parte1: $parte1");
-      print("parte2: $parte2");
-      print("denominador: $denominador");
-      print("IS: $resultadoM7");
 
       return resultadoM7.toDouble();
     }
@@ -452,15 +414,6 @@ class BiomasaService {
     final resultado =
         (a0 * pow(edad, exponente))/1000;
 
-    print("===== B1 =====");
-    print("a0: $a0");
-    print("a1: $a1");
-    print("a2: $a2");
-    print("a3: $a3");
-    print("exponente: $exponente");
-    print("IS: $indiceSitio");
-    print("Biomasa: $resultado");
-
     return resultado.toDouble();
   }
 
@@ -487,11 +440,6 @@ class BiomasaService {
     final resultado =
         base * pow(edad, exponente);
 
-    print("===== B2 =====");
-    print("IS: $indiceSitio");
-    print("Edad: $edad");
-    print("Densidad: $densidad");
-    print("Biomasa: $resultado");
 
     return resultado.toDouble();
   }
@@ -517,12 +465,6 @@ class BiomasaService {
 
     final resultado =
         base * pow(edad, exponente);
-
-    print("===== B3 =====");
-    print("IS: $indiceSitio");
-    print("Edad: $edad");
-    print("Densidad: $densidad");
-    print("Biomasa: $resultado");
 
     return resultado.toDouble();
   }
