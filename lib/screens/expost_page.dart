@@ -308,7 +308,17 @@ class _ExpostPageState extends State<ExpostPage> {
                         indiceSitio: IS,
                         parametros: parametros,
                       );
-                                          for (var especie in seleccionadas) {
+                      final datosExante = appState.obtenerParametros(
+                        appState.selectedProvincia,
+                         especie
+                      );
+
+                      final factorCarbono = (datosExante?["carbono"] ?? 0.5).todouble();
+                      final carbono = biomasa * factorCarbono;
+                      double totalCarbono = 0;
+
+
+                    for (var especie in seleccionadas) {
 
                       final datos = appState.obtenerDatosExpost(especie);
 
@@ -354,11 +364,13 @@ class _ExpostPageState extends State<ExpostPage> {
                         "porcentaje": double.tryParse(
                           porcentajes[especie]?.text ?? '0') ?? 0,
                         "altura": altura,
-                        "Indice Sitio": IS,
-                        "Biomasa": biomasa,
+                        "indiceSitio": IS,
+                        "biomasa": biomasa,
+                        "carbono": carbono,
                       });
 
                       totalBiomasa += biomasa;
+                      totalCarbono += carbono;
                     }
                     }
                   final superficie =
@@ -386,6 +398,7 @@ class _ExpostPageState extends State<ExpostPage> {
                         superficieUsuario: superficie,
                         totalPorHa: totalBiomasa,
                         totalProyecto: biomasaTotalProyecto,
+                        totalCarbono: totalCarbono,
                       ),
                     ),
                   );

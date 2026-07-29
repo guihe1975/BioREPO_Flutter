@@ -12,7 +12,7 @@ class ResultadosExpostPage extends StatelessWidget {
   final double superficieUsuario;
   //final String provincia;
   //final String municipio;
-  //final double totalCarbono;
+  final double totalCarbono;
   
 
   const ResultadosExpostPage({
@@ -25,14 +25,14 @@ class ResultadosExpostPage extends StatelessWidget {
     required this.superficieUsuario,
     //required this.provincia,
     //required this.municipio,
-    //required this.totalCarbono,
+    required this.totalCarbono,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Resultados EXANTE"),
+        title: const Text("Resultados EXPOST"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -45,24 +45,6 @@ class ResultadosExpostPage extends StatelessWidget {
             ),
 
             const SizedBox(height: 20),
-
-            // ✅ DATOS DE UBICACIÓN DEL PROYECTO
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Ubicación",
-                        style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text("Provincia: $provincia"),
-                    Text("Municipio: $municipio"),
-                  ],
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 10),
 
             Card(
               child: Padding(
@@ -159,12 +141,12 @@ class ResultadosExpostPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Biomasa: ${item["biomasa"].toStringAsFixed(2)}",
+                            "Biomasa: ${(item["biomasa"] ?? 0).toStringAsFixed(2)}",
                             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                           ),
                           Text(
-                            "Carbono: ${item["carbono"].toStringAsFixed(2)}",
-                            style: const TextStyle(fontSize: 12),
+                            "carbono: ${(item["carbono"] ?? 0).toDouble().toStringAsFixed(2)}",
+                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                           ),
                         ],
                       ),
