@@ -43,6 +43,21 @@ class MyAppState extends ChangeNotifier {
     loadExpost();
   }
 
+
+  // ===================================
+  // ✅ FUNCIÓN ESPECIFICA PARA EXPOST
+  // ===================================
+  List<String> obtenerEspeciesExpost() {
+    if (expostData.isEmpty) return [];
+
+    final lista = expostData["especies"] as List;
+
+    return lista
+        .map((e) => e["nombre"] as String)
+        .toList()
+      ..sort();
+  }
+
   // ================================
   // ✅ CARGAR MUNICIPIOS
   // ================================

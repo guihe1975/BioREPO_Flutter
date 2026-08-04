@@ -82,58 +82,65 @@ class MyHomePage extends StatelessWidget {
               ),
 
               const SizedBox(height: 30),
+              
+              if (appState.tipoCalculo == 'exante') ...[
 
-              // ✅ Dropdown PROVINCIAS
-              SizedBox(
-                width: 320,
-                child: DropdownButtonFormField<String>(
-                  initialValue: appState.selectedProvincia,
-                  hint: const Text('Provincia'),
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
+                // ✅ Dropdown PROVINCIAS
+                SizedBox(
+                  width: 320,
+                  child: DropdownButtonFormField<String>(
+                    initialValue: appState.selectedProvincia,
+                    hint: const Text('Provincia'),
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                    ),
+                    items: appState.provincias.map((provincia) {
+                      return DropdownMenuItem(
+                        value: provincia,
+                        child: Text(provincia),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      if (value != null) {
+                        appState.setProvincia(value);
+                      }
+                    },
                   ),
-                  items: appState.provincias.map((provincia) {
-                    return DropdownMenuItem(
-                      value: provincia,
-                      child: Text(provincia),
-                    );
-                  }).toList(),
-                  onChanged: (value) {
-                    if (value != null) {
-                      appState.setProvincia(value);
-                    }
-                  },
                 ),
-              ),
 
-              const SizedBox(height: 15),
+                const SizedBox(height: 15),
 
-              // ✅ Dropdown MUNICIPIOS
-              SizedBox(
-                width: 360,
-                child: DropdownButtonFormField<String>(
-                  initialValue: appState.selectedMunicipio,
-                  hint: const Text('Término municipal'),
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
+                // ✅ Dropdown MUNICIPIOS
+                SizedBox(
+                  width: 360,
+                  child: DropdownButtonFormField<String>(
+                    initialValue: appState.selectedMunicipio,
+                    hint: const Text('Término municipal'),
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                    ),
+                    items: appState.municipiosFiltrados.map((municipio) {
+                      return DropdownMenuItem(
+                        value: municipio,
+                        child: Text(
+                          municipio,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      if (value != null) {
+                        appState.setMunicipio(value);
+                      }
+                    },
                   ),
-                  items: appState.municipiosFiltrados.map((municipio) {
-                    return DropdownMenuItem(
-                      value: municipio,
-                      child: Text(municipio, overflow: TextOverflow.ellipsis),
-                    );
-                  }).toList(),
-                  onChanged: (value) {
-                    if (value != null) {
-                      appState.setMunicipio(value);
-                    }
-                  },
                 ),
-              ),
 
-              const SizedBox(height: 30),
+                const SizedBox(height: 30),
+              ],
 
               // ✅ Botón siguiente
+              
               SizedBox(
                 width: 200,
                 child: ElevatedButton(

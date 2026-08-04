@@ -4,10 +4,6 @@ import '../services/biomasa_service.dart';
 import '../providers/app_state.dart';
 import '../screens/resultados_expost_page.dart';
 
-
-
-
-
 class ExpostPage extends StatefulWidget {
   @override
   State<ExpostPage> createState() => _ExpostPageState();
@@ -27,10 +23,7 @@ class _ExpostPageState extends State<ExpostPage> {
   Widget build(BuildContext context) {
     final appState = context.watch<MyAppState>();
 
-    // ✅ OJO: de momento usamos las mismas especies
-    final especies = appState.selectedProvincia == null
-        ? <String>[]
-        : appState.obtenerEspecies(appState.selectedProvincia!);
+    final especies = appState.obtenerEspeciesExpost();
 
     return Scaffold(
       appBar: AppBar(
@@ -259,13 +252,10 @@ class _ExpostPageState extends State<ExpostPage> {
                     }
 
                     print("✅ Datos EXPOST correctos");
-                    
-                    // ===================================
-                    // TEST MODELO IS
-                    // ===================================
-                    List<Map<String, dynamic>> listaResultados =[];
-                    double totalBiomasa =0;
+                    List<Map<String, dynamic>> listaResultados = [];
 
+                    double totalBiomasa = 0;
+                    double totalCarbono = 0;
 
                     for (var especie in seleccionadas) {
 
@@ -283,13 +273,22 @@ class _ExpostPageState extends State<ExpostPage> {
                           (parametros["edad_ref"] ?? 0).toDouble();
 
                       final altura =
-                          double.tryParse(alturas[especie]?.text ?? '0') ?? 0;
+                          double.tryParse(
+                            alturas[especie]?.text ?? '0',
+                          ) ??
+                          0;
 
                       final edad =
-                          double.tryParse(edadController.text) ?? 0;
-                      
+                          double.tryParse(
+                            edadController.text,
+                          ) ??
+                          0;
+
                       final densidad =
-                          double.tryParse(densidadController.text) ?? 0;
+                          double.tryParse(
+                            densidadController.text,
+                          ) ??
+                          0;
 
                       final IS = BiomasaService.calcularIndiceSitio(
                         modelo: modelo,
@@ -299,70 +298,38 @@ class _ExpostPageState extends State<ExpostPage> {
                         parametros: parametros,
                       );
 
-                      final modeloBiomasa = datos["modelo_biomasa"];
+                      final modeloBiomasa =
+                          datos["modelo_biomasa"];
 
-                      final biomasa = BiomasaService.calcularBiomasaExpost(
+                      final biomasa =
+                          BiomasaService.calcularBiomasaExpost(
                         modeloBiomasa: modeloBiomasa,
                         edad: edad,
                         densidad: densidad,
                         indiceSitio: IS,
                         parametros: parametros,
                       );
-                      final datosExante = appState.obtenerParametros(
-                        appState.selectedProvincia,
-                         especie
+
+                      final datosExante =
+                          appState.obtenerParametros(
+                        appState.selectedProvincia!,
+                        especie,
                       );
 
-                      final factorCarbono = (datosExante?["carbono"] ?? 0.5).todouble();
-                      final carbono = biomasa * factorCarbono;
-                      double totalCarbono = 0;
+                      final factorCarbono =
+                          (datosExante?["carbono"] ?? 0.5)
+                              .toDouble();
 
+                      final carbono =
+                          biomasa * factorCarbono;
 
-                    for (var especie in seleccionadas) {
-
-                      final datos = appState.obtenerDatosExpost(especie);
-
-                      if (datos == null) {
-                        print("⚠️ No hay datos EXPOST para $especie");
-                        continue;
-                      }
-
-                      final modelo = datos["modelo_is"];
-                      final parametros = datos["parametros_is"];
-
-                      final t2 =
-                          (parametros["edad_ref"] ?? 0).toDouble();
-
-                      final altura =
-                          double.tryParse(alturas[especie]?.text ?? '0') ?? 0;
-
-                      final edad =
-                          double.tryParse(edadController.text) ?? 0;
-                      
-                      final densidad =
-                          double.tryParse(densidadController.text) ?? 0;
-
-                      final IS = BiomasaService.calcularIndiceSitio(
-                        modelo: modelo,
-                        H1: altura,
-                        t1: edad,
-                        t2: t2,
-                        parametros: parametros,
-                      );
-
-                      final modeloBiomasa = datos["modelo_biomasa"];
-
-                      final biomasa = BiomasaService.calcularBiomasaExpost(
-                        modeloBiomasa: modeloBiomasa,
-                        edad: edad,
-                        densidad: densidad,
-                        indiceSitio: IS,
-                        parametros: parametros,
-                      );
                       listaResultados.add({
                         "nombre": especie,
-                        "porcentaje": double.tryParse(
-                          porcentajes[especie]?.text ?? '0') ?? 0,
+                        "porcentaje":
+                            double.tryParse(
+                              porcentajes[especie]?.text ?? '0',
+                            ) ??
+                            0,
                         "altura": altura,
                         "indiceSitio": IS,
                         "biomasa": biomasa,
@@ -371,16 +338,49 @@ class _ExpostPageState extends State<ExpostPage> {
 
                       totalBiomasa += biomasa;
                       totalCarbono += carbono;
-                    }
-                    }
-                  final superficie =
-                    double.tryParse(superficieController.text) ?? 0;
 
-                  final biomasaTotalProyecto = (totalBiomasa * superficie)/1000; //de kg a toneladas
+                      print("================================");
+                      print("Especie: $especie");
+                      print("IS: $IS");
+                      print("Biomasa: $biomasa");
+                      print("Carbono: $carbono");
+                    }
 
-                  print(listaResultados);
-                  print("Total ha = $totalBiomasa");
-                  print("Total proyecto = $biomasaTotalProyecto");
+                    final superficie =
+                        double.tryParse(
+                          superficieController.text,
+                        ) ??
+                        0;
+
+                    final biomasaTotalProyecto =
+                        (totalBiomasa * superficie) / 1000;
+
+                    print(listaResultados);
+                    print("Total Biomasa: $totalBiomasa");
+                    print("Total Carbono: $totalCarbono");
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ResultadosExpostPage(
+                          resultados: listaResultados,
+                          edadUsuario:
+                              int.tryParse(
+                                edadController.text,
+                              ) ??
+                              0,
+                          densidadUsuario:
+                              double.tryParse(
+                                densidadController.text,
+                              ) ??
+                              0,
+                          superficieUsuario: superficie,
+                          totalPorHa: totalBiomasa,
+                          totalProyecto: biomasaTotalProyecto,
+                          totalCarbono: totalCarbono,
+                        ),
+                      ),
+                    );
                   
                   Navigator.push(
                     context,
