@@ -310,16 +310,11 @@ class _ExpostPageState extends State<ExpostPage> {
                         parametros: parametros,
                       );
 
-                      final datosExante =
-                          appState.obtenerParametros(
-                        appState.selectedProvincia!,
-                        especie,
-                      );
-
                       final factorCarbono =
-                          (datosExante?["carbono"] ?? 0.5)
-                              .toDouble();
-
+                        appState.obtenerFactorCarbono(
+                          especie,
+                        );
+                        
                       final carbono =
                           biomasa * factorCarbono;
 

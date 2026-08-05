@@ -221,6 +221,31 @@ class MyAppState extends ChangeNotifier {
 
     return especieData[0];
   }
+
+  double obtenerFactorCarbono(String especie) {
+
+    if (parametrosData.isEmpty) return 0.5;
+
+    final provincias = parametrosData["provincias"] as List;
+
+    for (final provincia in provincias) {
+
+      final especies = provincia["especies"] as List;
+
+      for (final e in especies) {
+
+        if (e["nombre"] == especie) {
+          return (e["carbono"] ?? 0.5).toDouble();
+        }
+      }
+    }
+
+    return 0.5;
+  }
+
+
+
+
   //VERIFICAR QUE EL PORCENTAJE DE LAS ESPECIES 
   // SELECCIONADAS SUMA 100%
   

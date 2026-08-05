@@ -303,32 +303,117 @@ class BiomasaService {
     return resultadoM6.toDouble();
   }
       
-    static double _modeloIS_M7(
-      double H1,
-      double t1,
-      double t2,
-      Map<String, dynamic> p,
-    ) {
-      final a1 = (p["p1"] ?? 0).toDouble();
-      final a2 = (p["p2"] ?? 0).toDouble();
+  // ==============   MODELO 7    ========================
+  static double _modeloIS_M7(
+    double H1,
+    double t1,
+    double t2,
+    Map<String, dynamic> p,
+  ) {
+    final a1 = (p["p1"] ?? 0).toDouble();
+    final a2 = (p["p2"] ?? 0).toDouble();
 
-      if (H1 == 0 || t2 == 0) return 0;
+    if (H1 == 0 || t2 == 0) return 0;
 
-      final parte1 = (a1 / H1);
+    final parte1 = (a1 / H1);
 
-      final parte2 = pow((t1 / t2), a2);
+    final parte2 = pow((t1 / t2), a2);
 
-      final denominador =
-          1 - (1 - (parte1 * parte2));
+    final denominador =
+        1 - (1 - (parte1 * parte2));
 
-      if (denominador == 0) return 0;
+    if (denominador == 0) return 0;
 
-      final resultadoM7 =
-          a1 / denominador;
+    final resultadoM7 =
+        a1 / denominador;
 
-      return resultadoM7.toDouble();
-    }
-  
+    return resultadoM7.toDouble();
+  }
+
+  // ==============   MODELO 11    ========================
+
+  static double _modeloIS_M11(
+    double H1,
+    double t1,
+    double t2,
+    Map<String, dynamic> p,
+  ) {
+    final a1 = (p["p1"] ?? 0).toDouble();
+    final a2 = (p["p2"] ?? 0).toDouble();
+
+    if (H1 <= 0 || t1 <= 0 || t2 <= 0) return 0;
+
+    final t1a2 = pow(t1, a2).toDouble();
+
+    final sqrtTerm = sqrt(
+      (4 * a1 * t1a2) +
+      pow(-(t1a2 * log(H1)), 2),
+    );
+
+    final X0 =
+        0.5 *
+        pow(t1, -a2) *
+        (t1a2 * log(H1) + sqrtTerm);
+
+    final resultadoM11 =
+        exp(X0) *
+        exp(-(a1 / X0) * pow(t2, -a2));
+
+    print("===== M11 =====");
+    print("H1: $H1");
+    print("t1: $t1");
+    print("t2: $t2");
+    print("a1: $a1");
+    print("a2: $a2");
+    print("X0: $X0");
+    print("IS: $resultadoM11");
+
+    return resultadoM11.toDouble();
+  }
+
+  // ==============   MODELO 12    ========================
+  static double _modeloIS_M12(
+    double H1,
+    double t1,
+    double t2,
+    Map<String, dynamic> p,
+  ) {
+    final a1 = (p["p1"] ?? 0).toDouble();
+    final a2 = (p["p2"] ?? 0).toDouble();
+
+    if (H1 <= 0 || t1 <= 0 || t2 <= 0) return 0;
+
+    final sqrtTerm = sqrt(
+      pow(H1, 2) +
+      (4 * a1 * H1 * pow(t1, -a2)),
+    );
+
+    final X0 =
+        0.5 * (H1 + sqrtTerm);
+
+    final denominator =
+        1 +
+        (a1 / X0) *
+        pow(t2, -a2);
+
+    if (denominator == 0) return 0;
+
+    final resultadoM12 =
+        X0 / denominator;
+
+    print("===== M12 =====");
+    print("H1: $H1");
+    print("t1: $t1");
+    print("t2: $t2");
+    print("a1: $a1");
+    print("a2: $a2");
+    print("X0: $X0");
+    print("Denominador: $denominator");
+    print("IS: $resultadoM12");
+
+    return resultadoM12.toDouble();
+  }
+
   // =====================================
   // ✅ CALCULO ÍNDICE DE SITIO (EXPOST)
   // =====================================
@@ -353,6 +438,12 @@ class BiomasaService {
       
       case "M7":
         return _modeloIS_M7(H1, t1, t2, parametros);
+      
+      case "M11":
+        return _modeloIS_M11(H1, t1, t2, parametros);
+      
+      case "M12":
+        return _modeloIS_M12(H1, t1, t2, parametros);
 
       default:
         return 0;
