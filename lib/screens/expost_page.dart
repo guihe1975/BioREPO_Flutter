@@ -314,7 +314,7 @@ class _ExpostPageState extends State<ExpostPage> {
                         appState.obtenerFactorCarbono(
                           especie,
                         );
-                        
+
                       final carbono =
                           biomasa * factorCarbono;
 
@@ -398,7 +398,7 @@ class _ExpostPageState extends State<ExpostPage> {
                     ),
                   );
                   },
-                  child: const Text("Validar datos EXPOST"),
+                  child: const Text("SIGUIENTE"),
                 ),
               ],
             ),
