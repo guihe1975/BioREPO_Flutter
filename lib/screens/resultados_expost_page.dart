@@ -145,7 +145,7 @@ class ResultadosExpostPage extends StatelessWidget {
                             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                           ),
                           Text(
-                            "carbono: ${(item["carbono"] ?? 0).toDouble().toStringAsFixed(2)}",
+                            "Carbono: ${(item["carbono"] ?? 0).toDouble().toStringAsFixed(2)}",
                             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                           ),
                         ],

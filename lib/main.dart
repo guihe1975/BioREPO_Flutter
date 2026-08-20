@@ -37,22 +37,60 @@ class MyHomePage extends StatelessWidget {
     var appState = context.watch<MyAppState>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Biomasa - CO2'),
-      ),
+      //appBar: AppBar(
+      //  title: const Text('Biomasa - CO2'),
+      //),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              // ✅ LOGOS CORPORATIVOs
+              Column(
+                mainAxisAlignment:MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/images/MIN-CSIC.jpg',
+                    height: 90,
+                    fit: BoxFit.contain,
+                  ),
 
-              const Text(
-                'Estimar la Biomasa y el Carbono de una plantación',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  const SizedBox(width: 30),
+                  
+                  Image.asset(
+                    'lib/images/ICIFOR-INIA.jpg',
+                    height: 100,
+                    fit: BoxFit.contain,
+                  ),
+                ],
               ),
 
               const SizedBox(height: 20),
+
+              // ✅ TÍTULO ALINEADO A LA IZQUIERDA
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text('BioREPO',
+                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                )
+              ),
+            
+              const SizedBox(height: 15),
+              
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Estimación de la Biomasa y el Carbono de una plantación',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 40),
+
 
               // ✅ OPTION BUTTONS (Radio)
               Card(
