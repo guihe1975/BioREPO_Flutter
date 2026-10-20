@@ -7,13 +7,14 @@ OutputDir=Output
 OutputBaseFilename=BioREPO_Installer
 Compression=lzma
 SolidCompression=yes
+SetupIconFile=lib\images\logo.ico
 
 [Files]
 Source: "build\windows\x64\runner\Release\*"; DestDir: "{app}"; Flags: recursesubdirs
 
 [Icons]
-Name: "{group}\BioREPO"; Filename: "{app}\BioREPO.exe"
-Name: "{commondesktop}\BioREPO"; Filename: "{app}\BioREPO.exe"
+Name: "{group}\BioREPO"; Filename: "{app}\BioREPO.exe"; IconFilename: "{app}\BioREPO.exe"
+Name: "{commondesktop}\BioREPO"; Filename: "{app}\BioREPO.exe"; IconFilename: "{app}\BioREPO.exe"
 
 [Run]
 Filename: "{app}\BioREPO.exe"; Description: "Ejecutar BioREPO"; Flags: nowait postinstall skipifsilent
