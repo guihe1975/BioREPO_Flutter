@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 # 🔹 Leer el EXCEL
-df = pd.read_excel("C:/Users/madrigal/Nextcloud/Flutter/Mi_App/mi_primera_app/lib/data/rangos.xlsx")
+df = pd.read_excel("C:/Users/madrigal/Nextcloud/Flutter/BioREPO/lib/data/rangos.xlsx")
 
 # 🔹 Limpiar nombres columnas
 df.columns = df.columns.str.strip()

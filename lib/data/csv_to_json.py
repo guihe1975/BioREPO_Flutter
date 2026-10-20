@@ -1,7 +1,7 @@
 import pandas as pd
 import json
 
-archivo = "C:/Users/madrigal/Nextcloud/Flutter/Mi_App/mi_primera_app/lib/data/exante_parametros.xlsx"
+archivo = "C:/Users/madrigal/Nextcloud/Flutter/BioREPO/lib/data/exante_parametros.xlsx"
 
 # ✅ leer hojas
 df_especies = pd.read_excel(archivo, sheet_name="modelo")

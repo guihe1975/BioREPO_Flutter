@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       create: (context) => MyAppState(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'BioREPO',
+        title: 'BioREPO v.0.1',
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),

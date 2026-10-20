@@ -1,3 +1,3 @@
-# mi_primera_app
+# BioREPO v.0.1
 
-A new Flutter project.
+Aplicación para estimar la biomasa y el carbono de una plantación.

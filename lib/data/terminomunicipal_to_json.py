@@ -1,7 +1,7 @@
 import pandas as pd
 import json
 
-df = pd.read_excel("C:/Users/madrigal/Nextcloud/Flutter/Mi_App/mi_primera_app/lib/data/provincias.xlsx")
+df = pd.read_excel("C:/Users/madrigal/Nextcloud/Flutter/BioREPO/lib/data/provincias.xlsx")
 
 resultado = {"provincias": []}
 

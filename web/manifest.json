@@ -1,11 +1,11 @@
 {
-    "name": "mi_primera_app",
-    "short_name": "mi_primera_app",
+    "name": "BioREPO v.0.1",
+    "short_name": "BioREPO v.0.1",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "BioREPO v.0.1",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
