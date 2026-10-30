@@ -48,16 +48,25 @@ class MyHomePage extends StatelessWidget {
             children: [
               // ✅ LOGOS CORPORATIVOs
               Column(
-                mainAxisAlignment:MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'lib/images/MIN-CSIC.jpg',
-                    height: 90,
-                    fit: BoxFit.contain,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'lib/images/MITECO.jpg',
+                        height: 90,
+                        fit: BoxFit.contain,
+                      ),
+                      const SizedBox(width: 30),
+                      Image.asset(
+                        'lib/images/GOB-MIN-CSIC.jpg',
+                        height: 85,
+                        fit: BoxFit.contain,
+                      ),
+                    ],
                   ),
-
-                  const SizedBox(width: 30),
-                  
                   Image.asset(
                     'lib/images/ICIFOR-INIA.jpg',
                     height: 100,
