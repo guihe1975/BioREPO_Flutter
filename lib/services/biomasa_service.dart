@@ -503,7 +503,7 @@ class BiomasaService {
         a3 * indiceSitio;
 
     final resultado =
-        (a0 * pow(edad, exponente))/1000;
+        a0 * pow(edad, exponente);
 
     return resultado.toDouble();
   }
