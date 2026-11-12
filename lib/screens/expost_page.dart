@@ -310,28 +310,32 @@ class _ExpostPageState extends State<ExpostPage> {
                         parametros: parametros,
                       );
 
+                      final porcentaje =
+                          double.tryParse(
+                            porcentajes[especie]?.text ?? '0',
+                          ) ??
+                          0;
+
+                      final biomasaPonderada = biomasa * (porcentaje / 100);
+
                       final factorCarbono =
                         appState.obtenerFactorCarbono(
                           especie,
                         );
 
                       final carbono =
-                          biomasa * factorCarbono;
+                          biomasaPonderada * factorCarbono;
 
                       listaResultados.add({
                         "nombre": especie,
-                        "porcentaje":
-                            double.tryParse(
-                              porcentajes[especie]?.text ?? '0',
-                            ) ??
-                            0,
+                        "porcentaje": porcentaje,
                         "altura": altura,
                         "indiceSitio": IS,
-                        "biomasa": biomasa,
+                        "biomasa": biomasaPonderada,
                         "carbono": carbono,
                       });
 
-                      totalBiomasa += biomasa;
+                      totalBiomasa += biomasaPonderada;
                       totalCarbono += carbono;
 
                       print("================================");
@@ -377,26 +381,6 @@ class _ExpostPageState extends State<ExpostPage> {
                       ),
                     );
                   
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ResultadosExpostPage(
-                        resultados: listaResultados,
-                        edadUsuario: int.tryParse(
-                              edadController.text,
-                            ) ??
-                            0,
-                        densidadUsuario: double.tryParse(
-                              densidadController.text,
-                            ) ??
-                            0,
-                        superficieUsuario: superficie,
-                        totalPorHa: totalBiomasa,
-                        totalProyecto: biomasaTotalProyecto,
-                        totalCarbono: totalCarbono,
-                      ),
-                    ),
-                  );
                   },
                   child: const Text("SIGUIENTE"),
                 ),
