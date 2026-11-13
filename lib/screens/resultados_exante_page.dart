@@ -72,8 +72,8 @@ class ResultadosExantePage extends StatelessWidget {
                   children: [
                     const Text("Datos introducidos",
                         style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text("Edad: $edadUsuario"),
-                    Text("Densidad: $densidadUsuario"),
+                    Text("Edad: $edadUsuario años"),
+                    Text("Densidad: $densidadUsuario pies/ha"),
                     Text("Superficie: $superficieUsuario"),
                   ],
                 ),
@@ -89,6 +89,12 @@ class ResultadosExantePage extends StatelessWidget {
                 itemBuilder: (context, index) {
 
                   final item = resultados[index];
+                  final porcentaje = (item["porcentaje"] as num).toDouble();
+                  final porcentajeTexto =
+                      porcentaje == porcentaje.roundToDouble()
+                          ? porcentaje.toStringAsFixed(0)
+                          : porcentaje.toString();
+                  final densidadEspecie = densidadUsuario * porcentaje / 100;
                   final appState = Provider.of<MyAppState>(context,listen: false);
                   final rangos = appState.obtenerModeloReferencia(item["nombre"]);
                   bool avisoEdad = false;
@@ -128,7 +134,9 @@ class ResultadosExantePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
 
-                          Text("Porcentaje: ${item["porcentaje"]}%"),
+                          Text(
+                            "${densidadEspecie.toStringAsFixed(0)} pie/ha - $porcentajeTexto%",
+                          ),
                           
                           if (rangos != null) ...[
                             Text(
@@ -159,11 +167,11 @@ class ResultadosExantePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Biomasa: ${item["biomasa"].toStringAsFixed(2)}",
+                            "Biomasa: ${item["biomasa"].toStringAsFixed(2)} kg/ha",
                             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                           ),
                           Text(
-                            "Carbono: ${item["carbono"].toStringAsFixed(2)}",
+                            "Carbono: ${item["carbono"].toStringAsFixed(2)} kg/ha",
                             style: const TextStyle(fontSize: 12),
                           ),
                         ],

@@ -13,13 +13,12 @@ class ResultadosExpostPage extends StatelessWidget {
   //final String provincia;
   //final String municipio;
   final double totalCarbono;
-  
 
   const ResultadosExpostPage({
     super.key,
     required this.resultados,
     required this.totalPorHa,
-    required this.totalProyecto,      
+    required this.totalProyecto,
     required this.edadUsuario,
     required this.densidadUsuario,
     required this.superficieUsuario,
@@ -38,7 +37,6 @@ class ResultadosExpostPage extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-
             const Text(
               "Resultados de Biomasa",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -69,16 +67,22 @@ class ResultadosExpostPage extends StatelessWidget {
               child: ListView.builder(
                 itemCount: resultados.length,
                 itemBuilder: (context, index) {
-
                   final item = resultados[index];
-                  final appState = Provider.of<MyAppState>(context,listen: false);
-                  final rangos = appState.obtenerModeloReferencia(item["nombre"]);
+                  final porcentaje = (item["porcentaje"] as num).toDouble();
+                  final porcentajeTexto =
+                      porcentaje == porcentaje.roundToDouble()
+                          ? porcentaje.toStringAsFixed(0)
+                          : porcentaje.toString();
+                  final densidadEspecie = densidadUsuario * porcentaje / 100;
+                  final appState =
+                      Provider.of<MyAppState>(context, listen: false);
+                  final rangos =
+                      appState.obtenerModeloReferencia(item["nombre"]);
                   bool avisoEdad = false;
                   bool avisoDensidad = false;
                   //bool avisoClima = false;
 
                   if (rangos != null) {
-
                     final edadMin = rangos["edad"]["min"];
                     final edadMax = rangos["edad"]["max"];
 
@@ -92,15 +96,15 @@ class ResultadosExpostPage extends StatelessWidget {
                     //final tmMax = rangos["temperatura"]["max"];
 
                     avisoEdad = edadUsuario < edadMin || edadUsuario > edadMax;
-                    avisoDensidad = densidadUsuario < densMin || densidadUsuario > densMax;
+                    avisoDensidad =
+                        densidadUsuario < densMin || densidadUsuario > densMax;
 
                     // clima lo puedes añadir si quieres pasar pt/tm a la pantalla
                   }
                   return Card(
                     elevation: 2,
-                    color: (avisoEdad || avisoDensidad)
-                        ? Colors.amber[100]
-                        : null,
+                    color:
+                        (avisoEdad || avisoDensidad) ? Colors.amber[100] : null,
                     margin: const EdgeInsets.symmetric(vertical: 5),
                     child: ListTile(
                       title: Text(item["nombre"]),
@@ -109,9 +113,9 @@ class ResultadosExpostPage extends StatelessWidget {
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-
-                          Text("Porcentaje: ${item["porcentaje"]}%"),
-                          
+                          Text(
+                            "${densidadEspecie.toStringAsFixed(0)} p/ha - $porcentajeTexto%",
+                          ),
                           if (rangos != null) ...[
                             Text(
                               "Edad: $edadUsuario (rango ${rangos["edad"]["min"]}-${rangos["edad"]["max"]})",
@@ -122,31 +126,33 @@ class ResultadosExpostPage extends StatelessWidget {
                               style: const TextStyle(fontSize: 12),
                             ),
                           ],
-
                           if (avisoEdad)
                             const Text(
                               "⚠️ Edad fuera de rango",
-                              style: TextStyle(color: Colors.orange, fontSize: 12),
+                              style:
+                                  TextStyle(color: Colors.orange, fontSize: 12),
                             ),
-
                           if (avisoDensidad)
                             const Text(
                               "⚠️ Densidad fuera de rango",
-                              style: TextStyle(color: Colors.orange, fontSize: 12),
+                              style:
+                                  TextStyle(color: Colors.orange, fontSize: 12),
                             ),
                         ],
                       ),
-                      
+
                       trailing: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Biomasa: ${(item["biomasa"] ?? 0).toStringAsFixed(2)}",
-                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                            "Biomasa: ${(item["biomasa"] ?? 0).toStringAsFixed(2)} kg/ha",
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 12),
                           ),
                           Text(
-                            "Carbono: ${(item["carbono"] ?? 0).toDouble().toStringAsFixed(2)}",
-                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                            "Carbono: ${(item["carbono"] ?? 0).toDouble().toStringAsFixed(2)} kg/ha",
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 12),
                           ),
                         ],
                       ),
@@ -165,7 +171,6 @@ class ResultadosExpostPage extends StatelessWidget {
                 padding: const EdgeInsets.all(15),
                 child: Column(
                   children: [
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -173,9 +178,7 @@ class ResultadosExpostPage extends StatelessWidget {
                         Text(totalPorHa.toStringAsFixed(2)),
                       ],
                     ),
-
                     const SizedBox(height: 10),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
