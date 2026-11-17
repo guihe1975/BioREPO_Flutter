@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '/providers/app_state.dart';
 import 'package:provider/provider.dart';
+import '/utils/especies_sorter.dart';
 //import '../providers/app_state.dart';
 
 class ResultadosExpostPage extends StatelessWidget {
@@ -29,6 +30,8 @@ class ResultadosExpostPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final resultadosOrdenados = ordenarResultadosPorEspecie(resultados);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Resultados EXPOST"),
@@ -65,9 +68,9 @@ class ResultadosExpostPage extends StatelessWidget {
             // ✅ LISTA DE ESPECIES
             Expanded(
               child: ListView.builder(
-                itemCount: resultados.length,
+                itemCount: resultadosOrdenados.length,
                 itemBuilder: (context, index) {
-                  final item = resultados[index];
+                  final item = resultadosOrdenados[index];
                   final porcentaje = (item["porcentaje"] as num).toDouble();
                   final porcentajeTexto =
                       porcentaje == porcentaje.roundToDouble()
