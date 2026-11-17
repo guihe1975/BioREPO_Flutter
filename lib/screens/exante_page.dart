@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/app_state.dart';
 import '../services/biomasa_service.dart';
+import '../utils/especies_sorter.dart';
 import 'resultados_exante_page.dart';
 
 class ExantePage extends StatefulWidget {
@@ -23,7 +24,9 @@ class _ExantePageState extends State<ExantePage> {
 
     final especies = appState.selectedProvincia == null
         ? <String>[]
-        : appState.obtenerEspecies(appState.selectedProvincia!);
+        : ordenarNombresEspecies(
+            appState.obtenerEspecies(appState.selectedProvincia!),
+          );
 
     return Scaffold(
       appBar: AppBar(

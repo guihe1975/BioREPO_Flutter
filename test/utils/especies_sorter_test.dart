@@ -28,4 +28,21 @@ void main() {
       ],
     );
   });
+
+  test('ordena nombres ignorando mayusculas y minusculas', () {
+    expect(
+      ordenarNombresEspecies([
+        'Abies alba',
+        'quercus ilex',
+        'pinus nigra',
+        'Pinus radiata',
+      ]),
+      [
+        'pinus nigra',
+        'Pinus radiata',
+        'quercus ilex',
+        'Abies alba',
+      ],
+    );
+  });
 }

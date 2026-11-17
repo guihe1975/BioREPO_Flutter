@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/biomasa_service.dart';
 import '../providers/app_state.dart';
+import '../utils/especies_sorter.dart';
 import '../screens/resultados_expost_page.dart';
 
 class ExpostPage extends StatefulWidget {
@@ -23,7 +24,8 @@ class _ExpostPageState extends State<ExpostPage> {
   Widget build(BuildContext context) {
     final appState = context.watch<MyAppState>();
 
-    final especies = appState.obtenerEspeciesExpost();
+    final especies =
+        ordenarNombresEspecies(appState.obtenerEspeciesExpost());
 
     return Scaffold(
       appBar: AppBar(
